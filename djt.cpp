@@ -5,15 +5,14 @@ using namespace std;
 
  
 int M[6][6]={{0,  7,  3,  inf,inf,inf}, 
-		     {7,  0,  1,  6,  inf,inf}, 
-		     {3,  1,  0,  3,  8,  inf}, 
-		     {inf,6,  3,  0,  2,  2  },  
-	             {inf,inf,8,  2,  0,  8  },  
-		     {inf,inf,inf,2,  8,  0  }}; 	
- 
- 
-int min(int a,int b){if(a<b){return a;} else return b;}
+	     {7,  0,  1,  6,  inf,inf}, 
+	     {3,  1,  0,  3,  8,  inf}, 
+	     {inf,6,  3,  0,  2,  2  },  
+	     {inf,inf,8,  2,  0,  8  },  
+	     {inf,inf,inf,2,  8,  0  }}; 	
 
+
+int min(int a,int b){if(a<b){return a;} else return b;}
 
 
 template<class T>
@@ -24,15 +23,13 @@ void copiar(int **matrix,vector<T> &d){
 }
 
 
-
-
 template<class T>
 bool hay_cero(vector<T> &vec_bool){
 	for(int i=0;i<vec_bool.size();i++){
 		if(vec_bool[i]==0){return true;}
 		}
 	return false;
-	}
+}
 
 
 
@@ -56,13 +53,13 @@ int get_min(vector<B> &vec_bool,vector<T> &d){
 }
 
 
-//--------------------------------------------------------
+//-----------------
 
 template<class T>
 vector<int> djt(T **matrix,int size_matrix){
 	//creamos los vectores 
 	vector<bool> c(size_matrix); for(int i=0;i<c.size();i++){c[i]=0;}//llenamos con ceros 
-	vector<int> d(6);
+	vector<int> d(size_matrix);
 	c[0]=1;//inicialisamos con un nodo 
 	copiar(matrix,d);
 
@@ -77,20 +74,28 @@ vector<int> djt(T **matrix,int size_matrix){
 	}
 	return d;
 }
-
-
+//--------------------
 
 
 
 int main(){
 	int **matriz;
-matriz=new int*[6];
-for(int i=0; i<6; i++){matriz[i]=new int[6];} //crear
-for(int i=0; i<6; i++){for(int j=0; j<6; j++){matriz[i][j]=M[i][j];}} //lenar
+	int tam =6;
+	
+	matriz=new int*[tam];
+	for(int i=0; i<tam; i++){matriz[i]=new int[tam];} //crear
+	for(int i=0; i<tam; i++){for(int j=0; j<tam; j++){matriz[i][j]=M[i][j];}} //lenar
 
-vector<int> n(6);
-n=djt(matriz,6);
+	vector<int> n(tam);
+	n=djt(matriz,tam);
 
-for(int i=0;i<n.size();i++){cout<<n[i]<<" ";}cout<<endl;
+	for(int i=0;i<n.size();i++){cout<<n[i]<<" ";}cout<<endl;
 	return 0;
-	}
+}
+
+
+
+
+
+
+
