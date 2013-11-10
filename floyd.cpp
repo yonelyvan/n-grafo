@@ -37,7 +37,6 @@ int main()
     for(int i=0; i<tam; i++){matriz[i]=new int[tam];} //crear
     for(int i=0; i<tam; i++){for(int j=0; j<tam; j++){matriz[i][j]=M[i][j];}} //llenar
 
-    floyd(matriz,6);cout<<"\n\n";
     for(int i=0; i<tam; i++){for(int j=0; j<tam; j++){cout<<matriz[i][j]<<" ";}cout<<endl;}//imprime resultado
 
     return 0;
